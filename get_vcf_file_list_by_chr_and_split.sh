@@ -1,10 +1,10 @@
 #!/bin/bash
 # Andrew Wood
-# No warrenty.
+# No warranty.
 
 # Set some global variables here:
-DIR="/Bulk/Whole genome sequences/Population level WGS variants, pVCF format - interim 200k release/"
-SPLITS=100
+DIR="/Bulk/GATK and GraphTyper WGS/GraphTyper population level WGS variants, pVCF format [500k release]"
+SPLITS=500
 
 # Define function to split file where suffix not fixed size
 split() {
@@ -39,13 +39,13 @@ split() {
 for i in {1..22}
 do
   # Generate file containing full list of VCFs per chromosome, ordered by block:
-  dx ls "${DIR}ukb24304_c${i}_b*_v1.vcf.gz" | sort -t"b" -k3.1 -n | awk -v d="$DIR" '{print d $0}' > chr${i}_vcf_list
+  dx ls "${DIR}/chr${i}/ukb23374_c${i}_b*_v1.vcf.gz" | sort -t"b" -k3.1 -n | awk -v d="$DIR/chr${i}/" '{print d $0}' > chr${i}_vcf_list
   # Split lists out
   split chr${i}_vcf_list
 done
 
 # Get X vcf file list ordered by block
-dx ls "${DIR}ukb24304_cX_b*_v1.vcf.gz" | sort -t"b" -k3.1 -n | awk -v d="$DIR" '{print d $0}' > chrX_vcf_list
+dx ls "${DIR}/chrX/ukb23374_cX_b*_v1.vcf.gz" | sort -t"b" -k3.1 -n | awk -v d="$DIR/chrX/" '{print d $0}' > chrX_vcf_list
 # Split lists out
 split chrX_vcf_list
 
