@@ -1,5 +1,5 @@
 # VCF to aGDS (`vcf2agds`) Overview
-## Description of VCF to aGDS conversion and annotation on the UK Biobank RAP
+### Description of VCF to aGDS conversion and annotation on the UK Biobank RAP
 Due to the number of VCFs and their file sizes on the DNAnexus platform, it may be necessary to reduce the amount of data 
 contained within VCFs if wanting to merge all VCFs associated with a chromosome on a workstation for subsequent format conversion and annotation. 
 The following suite of applets are provided here that may help facilitate this process. **The examples provided below focus on the UK Biobank 500k WGS data.**
