@@ -5,6 +5,7 @@ contained within VCFs if wanting to merge all VCFs associated with a chromosome 
 The following suite of applets are provided here that may help facilitate this process. **The examples provided below focus on the UK Biobank 500k WGS data.**
 
 ## Workflow Overview
+![vcf2agds workflow](vcf2agds_workflow.jpg)
 
 ### Step 1: Trimming down data in the VCFs
 See [`vcf_trimmer`](https://github.com/drarwood/vcf_trimmer) for an applet that removes fields and performs required filtering through bcftools.
