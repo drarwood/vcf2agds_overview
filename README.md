@@ -51,7 +51,8 @@ The output file should be subsequently uploaded to the RAP for processing with [
 ### Step 3: Converting VCF to SeqArray GDS for subsequent annotation in the [FAVOR database](https://favor.genohub.org)
 See [`vcf2gds`](https://github.com/drarwood/vcf2gds). This applet comes with an R library that will be unpacked during runtime and used for data conversion. The [SeqArray Genomic Data Structure (GDS) format](https://doi.org/10.1093/bioinformatics/btx145) is designed as a storage-efficient high-performance data format for WGS variant calls, utilizing a hierarchical structure to support efficient data access.
 
-
 ### Step 4: Annotating GDS to aGDS for subsequent association analysis in the [STAARpipeline](https://doi.org/10.1038/s41592-022-01640-x)
 See [`favorannotator`](https://github.com/xihaoli/favorannotator-rap). This applet pulls the [docker image](https://hub.docker.com/r/zilinli/staarpipeline) that will be executed during runtime and used for annotation. The [annotated GDS (aGDS) format](https://doi.org/10.1093/nar/gkac966) further extends the capabilities of SeqArray GDS by incorporating multi-faceted variant annotations within an all-in-one file to facilitate a range of functionally-informed downstream analyses. 
 
+## Reference
+Xihao Li<sup>\*,#</sup>, Andrew R. Wood<sup>\*,#</sup>, Yuxin Yuan<sup>\*</sup>, Manrui Zhang, Yushu Huang, Gareth Hawkes, Robin N. Beaumont, Michael N. Weedon, Wenyuan Li, Xiaoyu Li, Xihong Lin<sup>#</sup>, Zilin Li<sup>\*,#</sup>. **Streamlining Large-Scale Genomic Data Management: Insights from the UK Biobank Whole-Genome Sequencing Data**. _medRxiv_. DOI: <a href="https://doi.org/10.1101/2025.01.27.25321225">10.1101/2025.01.27.25321225</a>.
