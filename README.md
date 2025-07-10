@@ -1,8 +1,8 @@
 # VCF to aGDS (`vcf2agds`) Overview
-### Description of VCF to aGDS conversion and annotation on the UK Biobank RAP
+## Description of VCF to aGDS conversion and annotation
 Due to the number of VCFs and their file sizes on the DNAnexus platform, it may be necessary to reduce the amount of data 
 contained within VCFs if wanting to merge all VCFs associated with a chromosome on a workstation for subsequent format conversion and annotation. 
-The following suite of applets are provided here that may help facilitate this process. **The examples provided below focus on the UK Biobank 500k WGS data.**
+The following suite of applets are provided here that may help facilitate this process. **The examples provided below focus on the UK Biobank (UKB) 500k WGS data.**
 
 ## Workflow Overview
 ![vcf2agds workflow](vcf2agds_workflow.jpg)
@@ -52,7 +52,10 @@ The output file should be subsequently uploaded to the RAP for processing with [
 See [`vcf2gds`](https://github.com/drarwood/vcf2gds). This applet comes with an R library that will be unpacked during runtime and used for data conversion. The [SeqArray Genomic Data Structure (GDS) format](https://doi.org/10.1093/bioinformatics/btx145) is designed as a storage-efficient high-performance data format for WGS variant calls, utilizing a hierarchical structure to support efficient data access.
 
 ### Step 4: Annotating GDS to aGDS for subsequent association analysis in the [STAARpipeline](https://doi.org/10.1038/s41592-022-01640-x)
-See [`favorannotator`](https://github.com/xihaoli/favorannotator-rap). This applet pulls the [docker image](https://hub.docker.com/r/zilinli/staarpipeline) that will be executed during runtime and used for annotation. The [annotated GDS (aGDS) format](https://doi.org/10.1093/nar/gkac966) further extends the capabilities of SeqArray GDS by incorporating multi-faceted variant annotations within an all-in-one file to facilitate a range of functionally-informed downstream analyses. 
+See [`favorannotator`](https://github.com/xihaoli/favorannotator-rap). This applet pulls the [docker image](https://hub.docker.com/r/zilinli/staarpipeline) that will be executed during runtime and used for annotation. The [annotated GDS (aGDS) format](https://doi.org/10.1093/nar/gkac966) further extends the capabilities of SeqArray GDS by incorporating multi-faceted variant annotations within an all-in-one file to facilitate a range of functionally-informed downstream analyses.
+
+## README for generating UKB 500K WGS aGDS files on the UKB RAP
+A fully reproducible script for generating UK Biobank 500K WGS aGDS files on the Research Analysis Platform (RAP) is available at [`README_UKB_500K_vcf2agds`](https://github.com/drarwood/vcf2agds_overview/blob/xihaoli-patch-5/README_UKB_500K_vcf2agds.txt).
 
 ## Reference
 Xihao Li<sup>\*,#</sup>, Andrew R. Wood<sup>\*,#</sup>, Yuxin Yuan<sup>\*</sup>, Manrui Zhang, Yushu Huang, Gareth Hawkes, Robin N. Beaumont, Michael N. Weedon, Wenyuan Li, Xiaoyu Li, Xihong Lin<sup>#</sup>, Zilin Li<sup>\*,#</sup>. **Streamlining Large-Scale Genomic Data Management: Insights from the UK Biobank Whole-Genome Sequencing Data**. _medRxiv_. DOI: <a href="https://doi.org/10.1101/2025.01.27.25321225">10.1101/2025.01.27.25321225</a>.
