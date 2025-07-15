@@ -54,8 +54,8 @@ See [`vcf2gds`](https://github.com/drarwood/vcf2gds). This applet comes with an 
 ### Step 4: Annotating GDS to aGDS for subsequent association analysis in the [STAARpipeline](https://doi.org/10.1038/s41592-022-01640-x)
 See [`favorannotator`](https://github.com/xihaoli/favorannotator-rap). This applet pulls the [docker image](https://hub.docker.com/r/zilinli/staarpipeline) that will be executed during runtime and used for annotation. The [annotated GDS (aGDS) format](https://doi.org/10.1093/nar/gkac966) further extends the capabilities of SeqArray GDS by incorporating multi-faceted variant annotations within an all-in-one file to facilitate a range of functionally-informed downstream analyses.
 
-## README for generating UKB 500K WGS aGDS files on the UKB RAP
-A fully reproducible script for generating UK Biobank 500K WGS aGDS files on the Research Analysis Platform (RAP) is available at [`README_UKB_500K_vcf2agds`](https://github.com/drarwood/vcf2agds_overview/blob/xihaoli-patch-5/README_UKB_500K_vcf2agds.txt).
+## README for generating UKB 500k WGS aGDS files on the UKB RAP
+A fully reproducible script for generating UK Biobank 500k WGS aGDS files on the Research Analysis Platform (RAP) is available at [`README_UKB_500k_vcf2agds`](https://github.com/drarwood/vcf2agds_overview/blob/master/README_UKB_500k_vcf2agds.txt).
 
 ## Reference
 Xihao Li<sup>\*,#</sup>, Andrew R. Wood<sup>\*,#</sup>, Yuxin Yuan<sup>\*</sup>, Manrui Zhang, Yushu Huang, Gareth Hawkes, Robin N. Beaumont, Michael N. Weedon, Wenyuan Li, Xiaoyu Li, Xihong Lin<sup>#</sup>, Zilin Li<sup>\*,#</sup>. **Streamlining Large-Scale Genomic Data Management: Insights from the UK Biobank Whole-Genome Sequencing Data**. _medRxiv_. DOI: <a href="https://doi.org/10.1101/2025.01.27.25321225">10.1101/2025.01.27.25321225</a>.
