@@ -1,5 +1,5 @@
 ##################################################
-# UK Biobank 500K Whole-Genome Sequencing Data
+# UK Biobank 500k Whole-Genome Sequencing Data
 # vcf2agds Pipeline on UKB RAP (DNAnexus Platform)
 # Xihao Li, Andrew R. Wood, Yuxin Yuan,
 # Manrui Zhang, Yushu Huang, Gareth Hawkes,
@@ -17,7 +17,7 @@ cd /path_to_dx_toolkit/
 source dx-toolkit-0.381.0/environment
 cd dx-toolkit-0.381.0/bin
 dx login
-#dx ls (here we assume to have a project named UKB_500K_WGS)
+#dx ls (here we assume to have a project named UKB_500k_WGS)
 
 
 ##### Step 0 (Processing each chromosome over 500 jobs)
@@ -70,7 +70,7 @@ do
 done
 
 
-### Move all the generated files from local (dx-toolkit/bin) to an online subfolder (UKB_500K_WGS:/UKB_500K_WGS_vcf_list) on DNAnexus
+### Move all the generated files from local (dx-toolkit/bin) to an online subfolder (UKB_500k_WGS:/UKB_500k_WGS_vcf_list) on DNAnexus
 
 
 ##### Step 1: Trimming down data in the VCFs (vcf_trimmer)
@@ -78,21 +78,21 @@ done
 git clone https://github.com/drarwood/vcf_trimmer
 
 # Navigate to a relevant directory within the project directory on the DNAnexus platform
-dx cd UKB_500K_WGS:/
+dx cd UKB_500k_WGS:/
 
 # Now you are ready to build and upload the applet to the DNAnexus platform directory
 #dx build -f vcf_trimmer
 
-# Create a new folder under the project directory (Step1_vcf_trimmed_500K)
+# Create a new folder under the project directory (Step1_vcf_trimmed_500k)
 
 for CHR in {1..22} 
 do
   for i in {1..500}
   do
-    dx run UKB_500K_WGS:/vcf_trimmer \
-      -ivcf_file_list=UKB_500K_WGS:/UKB_500K_WGS_vcf_list/chr${CHR}_vcf_list_${i} \
+    dx run UKB_500k_WGS:/vcf_trimmer \
+      -ivcf_file_list=UKB_500k_WGS:/UKB_500k_WGS_vcf_list/chr${CHR}_vcf_list_${i} \
       -ifile_label=trimmed \
-      -ioutput_dir=Step1_vcf_trimmed_500K \
+      -ioutput_dir=Step1_vcf_trimmed_500k \
       -iqc_thresholds="INFO/AAScore>=0.5" \
       -ifields_to_remove="FORMAT/FT,FORMAT/AD,FORMAT/MD,FORMAT/DP,FORMAT/RA,FORMAT/PP,FORMAT/GQ,FORMAT/PL" \
       --instance-type="mem2_ssd1_v2_x32"\
@@ -106,41 +106,41 @@ done
 git clone https://github.com/drarwood/vcf_merger
 
 # Navigate to a relevant directory within the project directory on the DNAnexus platform
-dx cd UKB_500K_WGS:/
+dx cd UKB_500k_WGS:/
 
 # Now you are ready to build and upload the applet to the DNAnexus platform directory
 dx build -f vcf_merger
 
 for CHR in {1..22} 
 do
-  dx ls "UKB_500K_WGS:/Step1_vcf_trimmed_500K/ukb23374_c${CHR}_b*_v1_trimmed.vcf.gz" | sort -t"b" -k3.1 -n | awk -v d="Step1_vcf_trimmed_500K/" '{print d $0}' > chr${CHR}_vcfs_to_merge
+  dx ls "UKB_500k_WGS:/Step1_vcf_trimmed_500k/ukb23374_c${CHR}_b*_v1_trimmed.vcf.gz" | sort -t"b" -k3.1 -n | awk -v d="Step1_vcf_trimmed_500k/" '{print d $0}' > chr${CHR}_vcfs_to_merge
 done
 
-# Put the chr${CHR}_vcfs_to_merge files to a local folder (UKB_500K_WGS_trimmed_vcf_list)
+# Put the chr${CHR}_vcfs_to_merge files to a local folder (UKB_500k_WGS_trimmed_vcf_list)
 
-# Before step 2, need to check files in UKB_500K_WGS_trimmed_vcf_list/chr${CHR}_vcfs_to_merge. If there are duplicates, we need to remove the duplicated files and regenerate the chr${CHR}_vcfs_to_merge files
+# Before step 2, need to check files in UKB_500k_WGS_trimmed_vcf_list/chr${CHR}_vcfs_to_merge. If there are duplicates, we need to remove the duplicated files and regenerate the chr${CHR}_vcfs_to_merge files
 
 -------------------------------------------
 --- R scripts to check duplicated files ---
 -------------------------------------------
 
-files <- read.table("/path_to_dx_toolkit/bin/UKB_500K_WGS_trimmed_vcf_list/chr1_vcfs_to_merge")
+files <- read.table("/path_to_dx_toolkit/bin/UKB_500k_WGS_trimmed_vcf_list/chr1_vcfs_to_merge")
 head(files)
 dim(files)
 
 files[duplicated(files$V1),]
 -------------------------------------------
 
-### Move all the generated files from local (dx-toolkit/bin) to an online subfolder (UKB_500K_WGS:/UKB_500K_WGS_trimmed_vcf_list) on DNAnexus
+### Move all the generated files from local (dx-toolkit/bin) to an online subfolder (UKB_500k_WGS:/UKB_500k_WGS_trimmed_vcf_list) on DNAnexus
 
-# Create a new folder under the project directory (Step2_vcf_merged_500K)
+# Create a new folder under the project directory (Step2_vcf_merged_500k)
 
-dx cd UKB_500K_WGS:/Step2_vcf_merged_500K
+dx cd UKB_500k_WGS:/Step2_vcf_merged_500k
 
 for CHR in {1..8}
 do
-  dx run UKB_500K_WGS:/vcf_merger \
-    -ivcf_file_list=UKB_500K_WGS:/UKB_500K_WGS_trimmed_vcf_list/chr${CHR}_vcfs_to_merge \
+  dx run UKB_500k_WGS:/vcf_merger \
+    -ivcf_file_list=UKB_500k_WGS:/UKB_500k_WGS_trimmed_vcf_list/chr${CHR}_vcfs_to_merge \
     -imerged_vcf_filename=chr${CHR}_merged.vcf.gz \
     --priority high \
     --instance-type="mem2_ssd2_v2_x16"\
@@ -149,8 +149,8 @@ done
 
 for CHR in {9..22}
 do
-  dx run UKB_500K_WGS:/vcf_merger \
-    -ivcf_file_list=UKB_500K_WGS:/UKB_500K_WGS_trimmed_vcf_list/chr${CHR}_vcfs_to_merge \
+  dx run UKB_500k_WGS:/vcf_merger \
+    -ivcf_file_list=UKB_500k_WGS:/UKB_500k_WGS_trimmed_vcf_list/chr${CHR}_vcfs_to_merge \
     -imerged_vcf_filename=chr${CHR}_merged.vcf.gz \
     --priority high \
     --instance-type="mem2_ssd2_v2_x8"\
@@ -163,19 +163,19 @@ done
 git clone https://github.com/drarwood/vcf2gds
 
 # Navigate to a relevant directory within the project directory on the DNAnexus platform
-dx cd UKB_500K_WGS:/
+dx cd UKB_500k_WGS:/
 
 # Now you are ready to build and upload the applet to the DNAnexus platform directory
 dx build -f vcf2gds
 
-# Create a new folder under the project directory (Step3_gds_500K)
+# Create a new folder under the project directory (Step3_gds_500k)
 
-dx cd UKB_500K_WGS:/Step3_gds_500K
+dx cd UKB_500k_WGS:/Step3_gds_500k
 
 for CHR in {1..2} {4..4} {6..6} {8..8}
 do
-  dx run UKB_500K_WGS:/vcf2gds \
-    -ivcf_file=UKB_500K_WGS:/Step2_vcf_merged_500K/chr${CHR}_merged.vcf.gz \
+  dx run UKB_500k_WGS:/vcf2gds \
+    -ivcf_file=UKB_500k_WGS:/Step2_vcf_merged_500k/chr${CHR}_merged.vcf.gz \
     -igds_filename=chr${CHR}.gds \
     -iparallel=30 \
     --priority high \
@@ -185,8 +185,8 @@ done
 
 for CHR in {3..3} {5..5} {7..7} {9..22}
 do
-  dx run UKB_500K_WGS:/vcf2gds \
-    -ivcf_file=UKB_500K_WGS:/Step2_vcf_merged_500K/chr${CHR}_merged.vcf.gz \
+  dx run UKB_500k_WGS:/vcf2gds \
+    -ivcf_file=UKB_500k_WGS:/Step2_vcf_merged_500k/chr${CHR}_merged.vcf.gz \
     -igds_filename=chr${CHR}.gds \
     -iparallel=16 \
     --priority high \
@@ -200,19 +200,19 @@ done
 git clone https://github.com/li-lab-genetics/favorannotator-rap.git
 
 # Navigate to a relevant directory within the project directory on the DNAnexus platform
-dx cd UKB_500K_WGS:/
+dx cd UKB_500k_WGS:/
 
 # Compile the source code:
 dx build -f favorannotator-rap
 
-# Create a new folder under the project directory (UKB_500K_WGS_aGDS)
+# Create a new folder under the project directory (UKB_500k_WGS_aGDS)
 for CHR in {1..22}
 do
-  dx run UKB_500K_WGS:/favorannotator \
-  -igds_file=UKB_500K_WGS:/Step3_gds_500K/chr${CHR}.gds \
+  dx run UKB_500k_WGS:/favorannotator \
+  -igds_file=UKB_500k_WGS:/Step3_gds_500k/chr${CHR}.gds \
   -ichromosome=${CHR} \
   -iuse_compression=NO \
   -ioutfile=ukb.500k.wgs.chr${CHR}.pass.annotated \
-  --destination=UKB_500K_WGS:/UKB_500K_WGS_aGDS --yes
+  --destination=UKB_500k_WGS:/UKB_500k_WGS_aGDS --yes
 done
 
