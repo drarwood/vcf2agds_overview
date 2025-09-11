@@ -1,11 +1,11 @@
-##################################################
-# UK Biobank 500k Whole-Genome Sequencing Data
+##########################################################
+# UK Biobank GraphTyper 500k Whole-Genome Sequencing Data
 # vcf2agds Pipeline on UKB RAP (DNAnexus Platform)
 # Xihao Li, Andrew R. Wood, Yuxin Yuan,
 # Manrui Zhang, Yushu Huang, Gareth Hawkes,
 # Robin N. Beaumont, Michael N. Weedon,
 # Wenyuan Li, Xiaoyu Li, Xihong Lin, Zilin Li
-##################################################
+##########################################################
 
 ##### Install DNAnexus Platform SDK
 # Open anaconda prompt:
