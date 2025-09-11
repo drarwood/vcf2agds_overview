@@ -58,7 +58,7 @@ See [`favorannotator`](https://github.com/xihaoli/favorannotator-rap). This appl
 A fully reproducible script for generating UK Biobank 500k WGS aGDS files on the Research Analysis Platform (RAP) is available at [`README_UKB_GraphTyper_500k_vcf2agds`](https://github.com/drarwood/vcf2agds_overview/blob/master/README_UKB_GraphTyper_500k_vcf2agds.txt).
 
 ## README for generating UKB ML-Corrected DRAGEN 500k WGS aGDS files on the UKB RAP
-A fully reproducible script for generating UK Biobank ML-Corrected DRAGEN 500k WGS aGDS files on the Research Analysis Platform (RAP) is available at [`README_UKB_DRAGEN_500K_vcf2agds`](https://github.com/drarwood/vcf2agds_overview/blob/master/README_UKB_DRAGEN_500K_vcf2agds.txt).
+A fully reproducible script for generating UK Biobank ML-Corrected DRAGEN 500k WGS aGDS files on the Research Analysis Platform (RAP) is available at [`README_UKB_DRAGEN_500k_vcf2agds`](https://github.com/drarwood/vcf2agds_overview/blob/master/README_UKB_DRAGEN_500k_vcf2agds.txt).
 
 **Table 1. File size summary and comparison of the UK Biobank ML-Corrected DRAGEN 500K WGS datasets**  
 _ML-corrected DRAGEN (Field 24311), PLINK2 pgen (Field 24308), and BGEN (Field 24309)._  
