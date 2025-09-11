@@ -54,8 +54,45 @@ See [`vcf2gds`](https://github.com/drarwood/vcf2gds). This applet comes with an 
 ### Step 4: Annotating GDS to aGDS for subsequent association analysis in the [STAARpipeline](https://doi.org/10.1038/s41592-022-01640-x)
 See [`favorannotator`](https://github.com/xihaoli/favorannotator-rap). This applet pulls the [docker image](https://hub.docker.com/r/zilinli/staarpipeline) that will be executed during runtime and used for annotation. The [annotated GDS (aGDS) format](https://doi.org/10.1093/nar/gkac966) further extends the capabilities of SeqArray GDS by incorporating multi-faceted variant annotations within an all-in-one file to facilitate a range of functionally-informed downstream analyses.
 
-## README for generating UKB 500k WGS aGDS files on the UKB RAP
-A fully reproducible script for generating UK Biobank 500k WGS aGDS files on the Research Analysis Platform (RAP) is available at [`README_UKB_500k_vcf2agds`](https://github.com/drarwood/vcf2agds_overview/blob/master/README_UKB_500k_vcf2agds.txt).
+## README for generating UKB GraphTyper 500k WGS aGDS files on the UKB RAP
+A fully reproducible script for generating UK Biobank 500k WGS aGDS files on the Research Analysis Platform (RAP) is available at [`README_UKB_GraphTyper_500k_vcf2agds`](https://github.com/drarwood/vcf2agds_overview/blob/master/README_UKB_GraphTyper_500k_vcf2agds.txt).
+
+## README for generating UKB ML-Corrected DRAGEN 500k WGS aGDS files on the UKB RAP
+A fully reproducible script for generating UK Biobank ML-Corrected DRAGEN 500k WGS aGDS files on the Research Analysis Platform (RAP) is available at [`README_UKB_DRAGEN_500K_vcf2agds`](https://github.com/drarwood/vcf2agds_overview/blob/master/README_UKB_DRAGEN_500K_vcf2agds.txt).
+
+**Table 1. File size summary and comparison of the UK Biobank ML-Corrected DRAGEN 500K WGS datasets**  
+_ML-corrected DRAGEN (Field 24311), PLINK2 pgen (Field 24308), and BGEN (Field 24309)._  
+**Chr**: Chromosome. **VCF files (GiB)**: Size of project VCF (pVCF) files per chromosome, in gibibytes.  
+**PLINK2 pgen files (GiB)**: Size of PLINK2 pgen files (.pgen, .psam, .pvar) per chromosome, in gibibytes.  
+**BGEN files (GiB)**: Size of BGEN files (.bgen, .bgen.bgi, .sample) per chromosome, in gibibytes.  
+**GDS files (GiB)**: Size of GDS files converted from the pVCFs, in gibibytes.  
+**aGDS files (GiB)**: Size of annotated GDS (aGDS) files, in gibibytes.
+
+| **Chr** | **VCF files (GiB)** | **PLINK2 pgen files (GiB)** | **BGEN files (GiB)** | **GDS files (GiB)** | **aGDS files (GiB)** |
+|--------:|-------------------:|----------------------------:|--------------------:|-------------------:|--------------------:|
+| 1       | 1560.75            | 362.12                      | 1041.39             | 132.70             | 152.53              |
+| 2       | 1254.83            | 284.58                      | 783.07              | 108.87             | 128.28              |
+| 3       | 1010.51            | 225.20                      | 625.42              | 85.67              | 101.23              |
+| 4       | 958.80             | 213.61                      | 595.58              | 84.83              | 99.36               |
+| 5       | 865.15             | 188.82                      | 530.05              | 77.81              | 91.78               |
+| 6       | 770.50             | 168.04                      | 467.25              | 73.82              | 87.47               |
+| 7       | 1168.03            | 280.29                      | 782.60              | 88.03              | 101.46              |
+| 8       | 819.97             | 186.26                      | 518.84              | 67.50              | 79.57               |
+| 9       | 1153.89            | 283.39                      | 803.25              | 76.86              | 87.98               |
+| 10      | 778.05             | 184.89                      | 505.11              | 70.33              | 81.48               |
+| 11      | 1303.74            | 321.36                      | 902.92              | 93.06              | 105.48              |
+| 12      | 1108.62            | 261.80                      | 754.00              | 75.19              | 86.85               |
+| 13      | 694.60             | 166.96                      | 469.31              | 60.01              | 67.97               |
+| 14      | 333.16             | 67.32                       | 189.58              | 35.00              | 42.17               |
+| 15      | 661.50             | 160.85                      | 450.53              | 46.63              | 53.99               |
+| 16      | 640.60             | 157.06                      | 428.27              | 49.34              | 57.85               |
+| 17      | 592.09             | 135.46                      | 399.63              | 44.36              | 52.75               |
+| 18      | 1083.05            | 283.40                      | 784.46              | 60.69              | 68.02               |
+| 19      | 266.01             | 57.08                       | 162.37              | 28.77              | 35.43               |
+| 20      | 612.73             | 152.30                      | 426.67              | 43.05              | 49.00               |
+| 21      | 326.51             | 79.67                       | 226.91              | 23.87              | 27.25               |
+| 22      | 331.92             | 77.06                       | 231.19              | 24.90              | 28.77               |
+| **Total**| **18295.03**      | **4297.53**                 | **12078.39**        | **1451.28**        | **1686.67**         |
 
 ## Reference
 Xihao Li<sup>\*,#</sup>, Andrew R. Wood<sup>\*,#</sup>, Yuxin Yuan<sup>\*</sup>, Manrui Zhang, Yushu Huang, Gareth Hawkes, Robin N. Beaumont, Michael N. Weedon, Wenyuan Li, Xiaoyu Li, Xihong Lin<sup>#</sup>, Zilin Li<sup>\*,#</sup>. **Streamlining Large-Scale Genomic Data Management: Insights from the UK Biobank Whole-Genome Sequencing Data**. _medRxiv_. DOI: <a href="https://doi.org/10.1101/2025.01.27.25321225">10.1101/2025.01.27.25321225</a>.
