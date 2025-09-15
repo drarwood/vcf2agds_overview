@@ -61,8 +61,9 @@ A fully reproducible script for generating UK Biobank GraphTyper 500k WGS aGDS f
 A fully reproducible script for generating UK Biobank ML-Corrected DRAGEN 500k WGS aGDS files on the Research Analysis Platform (RAP) is available at [`README_UKB_DRAGEN_500k_vcf2agds`](https://github.com/drarwood/vcf2agds_overview/blob/master/README_UKB_DRAGEN_500k_vcf2agds.txt).
 
 **Table 1. File size summary and comparison of the UK Biobank ML-Corrected DRAGEN 500K WGS datasets**  
-_ML-corrected DRAGEN (Field 24311), PLINK2 pgen (Field 24308), BGEN (Field 24309), GDS and aGDS files._  
-**Chr**: Chromosome. **VCF files (GiB)**: Size of project VCF (pVCF) files per chromosome, in gibibytes.  
+_ML-corrected DRAGEN VCF (Field 24311), PLINK2 pgen (Field 24308), BGEN (Field 24309), GDS and aGDS files._  
+**Chr**: Chromosome.  
+**VCF files (GiB)**: Size of project VCF (pVCF) files per chromosome, in gibibytes.  
 **PLINK2 pgen files (GiB)**: Size of PLINK2 pgen files (.pgen, .psam, .pvar) per chromosome, in gibibytes.  
 **BGEN files (GiB)**: Size of BGEN files (.bgen, .bgen.bgi, .sample) per chromosome, in gibibytes.  
 **GDS files (GiB)**: Size of GDS files converted from the pVCFs, in gibibytes.  
