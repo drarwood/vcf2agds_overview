@@ -19,6 +19,10 @@ cd dx-toolkit-0.381.0/bin
 dx login
 #dx ls (here we assume to have a project named UKB_500k_WGS)
 
+# Set some global variables here:
+DIR="/Bulk/DRAGEN WGS/ML-corrected DRAGEN population level WGS variants, pVCF format [500k release]/"
+echo "$DIR"
+
 ##### Step 2: Merging VCFs (vcf_merger)
 # Clone this github repo to a local directory:
 git clone https://github.com/drarwood/vcf_merger
@@ -146,3 +150,4 @@ do
   -ioutfile=ukb.500k.wgs.chr${CHR}.pass.annotated \
   --destination=UKB_500k_WGS:/UKB_500K_WGS_AGDS_uncompressed --yes
 done
+
