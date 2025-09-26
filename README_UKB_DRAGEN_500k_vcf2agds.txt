@@ -150,4 +150,3 @@ do
   -ioutfile=ukb.500k.wgs.chr${CHR}.pass.annotated \
   --destination=UKB_500k_WGS:/UKB_500K_WGS_AGDS_uncompressed --yes
 done
-
